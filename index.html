@@ -14,14 +14,22 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/templatemo-style.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script type="text/javascript">
+		window.onload=function(){document.querySelector('#search').addEventListener('click', (e) => {
+			e.target.href += document.querySelector('#searchtxt').value
+			}, false)
+		};
+		</script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+        <![endif]-->      
         <div id="home" class="carousel slide carousel-fade" data-ride="carousel">
-
+		<div>
+		<a id="search" href="https://www.baidu.com/s?wd=" target="_black" class="button default"> baidu </a>
+		<input type="text" id="searchtxt" style="color:#F00;width:20%;">
+		</div>
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
                 <div class="item active">
@@ -327,7 +335,13 @@
         <script src="js/min/main.min.js"></script>
 
     </body>
-	<script type="text/javascript">
+
+	<script type="text/javascript">	
+		$('#searchtxt').bind('keypress',function(event){
+			if(event.keyCode == "13"&&document.querySelector('#searchtxt').value!=""){
+			document.querySelector('#search').click();
+			}  
+		});
         $(document).on("click", "#SendEmail", function () {
             var subject = document.getElementById("subject").value;
             var message = document.getElementById("message").value;
@@ -335,5 +349,5 @@
             document.getElementById("SendEmail").setAttribute("href", url);
      　　　　//return fasle;
         });
-</script>
+	</script>
 </html>
